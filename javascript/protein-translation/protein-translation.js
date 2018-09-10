@@ -6,28 +6,47 @@ function translate(rna){
     return []
   } else {
    rnaArr= rna.match(/.{1,3}/g);
-    breakme: rnaArr.forEach(rna=>{
-     if(rna==="AUG"){
-      resultsArr.push("Methionine")
-    } else if (rna=== "UUU"||rna=== "UUC"){
-        resultsArr.push("Phenylalanine")
-    } else if (rna==="UUA"||rna=== "UUG"){
-        resultsArr.push("Leucine")
-    } else if (rna==="UCU" ||rna=== "UCC"||rna=== "UCA"||rna=== "UCG" ){
-        resultsArr.push("Serine")
-    } else if (rna==="UAU"||rna=== "UAC"){
-        resultsArr.push("Tyrosine")
-    } else if (rna==="UGU"|| rna=== "UGC"){
-        resultsArr.push("Cysteine")
-    } else if (rna==="UGG"){
-        resultsArr.push("Tryptophan")
-    } if (rna==="UAA"|| rna=== "UAG"||rna=== "UGA"){
-        //we want to exit the loop if these conditions are met
-        return resultsArr;
-    } else {
-        return new Error('Invalid codon');
-    }
-  })
+    breakme: for(var rna=0;rna<rnaArr.length;rna++){
+    switch(rnaArr[rna]){
+      case "AUG":
+        resultsArr.push("Methionine");
+        break;
+      case "UUU":
+      case "UUC":
+        resultsArr.push("Phenylalanine");
+        break;
+      case "UUA":
+      case "UUG":
+        resultsArr.push("Leucine");
+        break;
+      case "UCU":
+      case "UCC":
+      case "UCA":
+      case "UCG":
+        resultsArr.push("Serine");
+        break;
+      case "UAU":
+      case "UAC":
+        resultsArr.push("Tyrosine");
+        break;
+
+      case "UGU":
+      case "UGC":
+        resultsArr.push("Cysteine");
+        break;
+      case "UGG":
+        resultsArr.push("Tryptophan");
+        break;
+
+      case "UAA":
+      case "UAG":
+      case "UGA":
+        break breakme;
+      default:
+        throw new Error('Invalid codon');
+      }
+
+  }
   return resultsArr
 }
 }
