@@ -5,14 +5,29 @@
 //
 
 export const hey = message => {
-  function hasLowerCase(str) {
-    return (/[a-z]/.test(str));
+  function hasLetters(str) {
+    return ((/[a-z]/i).test(str));
+}
+function isQuestion(message){
+  let trim= message.trim()
+  return trim.split("")[trim.length-1]==="?"
+}
+function isShouting(message){
+  return message===message.toUpperCase() && hasLetters(message)
 }
 
-  if(message===message.toUpperCase()){
+function isSilent(message){
+ return  message.trim()==="";
+}
+
+  if(isShouting(message) && !isQuestion(message)){
     return 'Whoa, chill out!';
-    } else if (message.includes("?")){
+    } else if (isQuestion(message) && !isShouting(message)){
       return 'Sure.';
+    } else if (isSilent(message)){
+      return 'Fine. Be that way!';
+    } else if (isShouting(message) && isQuestion(message)){
+      return 'Calm down, I know what I\'m doing!';
     } else {
     return "Whatever.";
   }
