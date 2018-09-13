@@ -1,18 +1,35 @@
 //generates a random string of letters of whatever link given
-function generateRandom(num){
+// function generateRandom(num){
 
+//   let alphabet = "abcdefghijklmnopqrstuvwxyz".split("").sort()
+//   let randomArray = []
+//     for (i=0;i<num;i++){
+//        let randomIndex = Math.floor(Math.random() * 26)
+//       randomArray.push(alphabet[randomIndex])
+//     }
+//     return randomArray.join("")
+// }
+
+// // the following code offsets the string given by the key. it is incredibly messy but
+function shift(str,key){
+
+function returnOffset(x){
   let alphabet = "abcdefghijklmnopqrstuvwxyz".split("").sort()
-  let randomArray = []
-    for (i=0;i<num;i++){
-       let randomIndex = Math.floor(Math.random() * 26)
-      randomArray.push(alphabet[randomIndex])
-    }
-    return randomArray.join("")
+
+  let alphOb = Object.assign({}, alphabet);
+function getOffset(key){
+return key.slice(0,1)
 }
+let key = getOffset(x)
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+  }
 
-// // the following code offset the string given by whatever amount given
+amount = getKeyByValue(alphOb,key)
+return parseFloat(amount)
+}
+amount =returnOffset(key)
 
-function shift(str,amount){
   let string = str.replace(/\s/g, "")
   let alphabet = "abcdefghijklmnopqrstuvwxyz".split("").sort()
 
