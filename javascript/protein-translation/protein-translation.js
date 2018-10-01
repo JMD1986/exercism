@@ -29,7 +29,6 @@ function translate(rna){
       case "UAC":
         resultsArr.push("Tyrosine");
         break;
-
       case "UGU":
       case "UGC":
         resultsArr.push("Cysteine");
