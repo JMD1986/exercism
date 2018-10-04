@@ -1,6 +1,13 @@
-function anagram(word, array){
+var anagram = function( word ) { return new Anagram(word); };
+
+function Anagram(word){
+  this.word = word;
+}
+Anagram.prototype.matches = function(array){
   function reword(word){
     return word.split("").sort().join("")
   }
-   return array.map(x=>reword(x)).filter(x=>x===reword(word))
+   return array.filter(x=>reword(x)===reword(word))
 }
+
+module.exports = anagram;
