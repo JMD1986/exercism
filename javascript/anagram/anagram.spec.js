@@ -8,7 +8,7 @@ describe('Anagram', () => {
     expect(matches).toEqual([]);
   });
 
-  xtest('detects two anagrams', () => {
+  test('detects two anagrams', () => {
     const subject = new Anagram('master');
     const matches = subject.matches(['stream', 'pigeon', 'maters']);
 
